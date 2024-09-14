@@ -1,0 +1,64 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+
+const repos = [
+    "https://api.github.com/repos/softmodded/whiplash",
+    "https://api.github.com/repos/softmodded/rate-your-video",
+    "https://api.github.com/repos/softmodded/acacia",
+    "https://api.github.com/repos/softmodded/fov",
+];
+
+const repoData = await Promise.all(
+    repos.map(async repo => {
+        const requestInit = {
+            headers: new Headers({
+                "User-Agent": "https://github.com/khcrysalis/khcrysalis.dev",
+            }),
+        } satisfies RequestInit;
+
+
+
+        return fetch(repo, requestInit)
+            .then(async r => {
+                if (!r.ok) {
+                    const e = await r.text().catch(() => "Unknown Error");
+                    throw new Error(
+                        `Failed to fetch repo info for ${repo}: ${r.status} ${r.statusText}\n${e}`
+                    );
+                }
+                return r.json();
+            })
+            .catch(e => {
+                console.error(e);
+                return null;
+            });
+    })
+);
+---
+
+<div>
+    <ProjectCard name="Parris Island" description="A military Roblox game based on the United States Marine Corps." language="Lua" owner={{ login: "USMC", avatar_url: "https://github.com/USMCDevelopment.png" }} stars_count="8k+" html_url="https://www.roblox.com/games/11456842109/Marine-Academy" />
+    <ProjectCard name="Parade Grounds" description="A lightweight build of Parris Island for inspection usage." language="Lua" owner={{ login: "USMC", avatar_url: "https://github.com/USMCDevelopment.png" }} stars_count="145" html_url="https://www.roblox.com/games/14154431749/Parade-Grounds-V3" />
+    {repoData.map(data => (data ? <ProjectCard {...data} /> : null))}
+</div>
+
+<style>
+    div {
+        --cols: 2;
+        display: grid;
+        grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+        gap: 0.75em;
+    }
+
+    @media screen and (max-width: 1400px) {
+        div {
+            --cols: 2;
+        }
+    }
+
+    @media screen and (max-width: 1000px) {
+        div {
+            --cols: 1;
+        }
+    }
+</style>

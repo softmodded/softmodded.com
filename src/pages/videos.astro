@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Default.astro";
+import "../styles/page.css";
+
+const video_base_url = "/assets/videos/";
+
+const videos = [
+    "activity_leaderboards.mov",
+    "handcuffs.mov",
+    "locker_system.mov",
+]
+
+const folders = {
+    "npcs": ["gambling_npc.mov", "gun_npc.mov", "vechicle_npc.mov"],
+    "gangs": ["gang_creation.mov", "gang_management.mov"],
+    "main_menu": ["team_selector.mov", "store_page.mov", "crates_page.mov", "misc_and_settings.mov", "loadout_selector.mov"],
+}
+---
+
+<Layout>
+  <>
+    <p>[ videos ]</p>
+    <p> partially confidential </p>
+    <p>! warning ! i am not a ui designer!!! i did not design any of the ui in the following videos</p>
+
+    <div class="file_explorer">
+        {videos.map((video) => (
+            <a href={'/videos/' + video} class="video_text">{video}</a>
+            <br></br>
+        ))}
+    </div>
+
+    <div class="file_explorer">
+        {Object.keys(folders).map((folder) => (
+            <>
+                <p>{folder}</p>
+                {folders[folder].map((video) => (
+                    <a href={'/videos/' + folder + '/' + video} class="video_text">{video}</a>
+                    <br></br>
+                ))}
+            </>
+        ))}
+  </div>
+</Layout>

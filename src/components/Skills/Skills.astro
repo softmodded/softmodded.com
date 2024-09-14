@@ -1,0 +1,33 @@
+---
+
+const d = {
+  skills: [
+    { icon: "/assets/svg/skills_javascript.svg", media: "Javascript", link: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+    { icon: "/assets/svg/skills_vue.svg", media: "Vue", link: "https://vuejs.org" },
+    { icon: "/assets/svg/skills_html.png", media: "HTML", link: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+    { icon: "/assets/svg/skills_astro.png", media: "Astro", link: "https://astro.build" },
+    { icon: "/assets/svg/skills_nuxt.svg", media: "Nuxt", link: "https://nuxt.com"},
+    { icon: "/assets/svg/skills_lua.svg", media: "Lua", link: "https://lua.org"},
+    { icon: "/assets/svg/skills_haxe.svg", media: "Haxe", link: "https://haxe.org"},
+    { icon: "/assets/svg/skills_react.svg", media: "React", link: "https://react.dev"},
+    { icon: "/assets/svg/skills_typescript.svg", media: "Typescript", link: "https://typescript.org"},
+  ],
+};
+
+---
+
+<skills>
+    <h2 style="margin-bottom: 10px;">Skills</h2>
+    <div style="display: flex;flex-wrap: wrap;">
+        {
+          d.skills.map((item) => (
+            <a href={item.link} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+              <div class="contact-pill">
+                <img src={item.icon} alt={item.media} />
+                <span>{item.media}</span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+</skills>

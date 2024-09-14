@@ -1,0 +1,12 @@
+---
+import Layout from "../../../layouts/Default.astro";
+import "../../../styles/page.css";
+const { id, folder } = Astro.params;
+---
+
+<Layout>
+    <h1>{id}</h1>
+    <video class="showcase" controls>
+        <source src={`/assets/videos/${folder}/${id}`} type="video/mp4"/>
+    </video>
+</Layout>
