@@ -1,0 +1,17 @@
+---
+const { link } = Astro.params
+const result = await fetch(`https://api.softmodded.com/api/links/${link}`)
+
+// the api will redirect you to the actual link, so we need to get the final url
+const finalUrl = result.url
+
+if (finalUrl) {
+    return Astro.redirect(finalUrl)
+} else {
+    return Astro.redirect('/404')
+}
+---
+
+<h1>
+    Redirecting...
+</h1>
