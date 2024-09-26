@@ -3,7 +3,7 @@ import Layout from "../layouts/Default.astro";
 import "../styles/page.css";
 import Skills from "../components/Skills/Skills.astro";
 
-const lastFMUrl = "https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=blahaij&limit=1&extended=0&api_key=19782c92bcfb94a712e1e4e9ae281075&format=json"
+const lastFMUrl = import.meta.env.LASTFM;
 let lastFMData = await fetch(lastFMUrl).then((res) => res.json()).then((data) => data.recenttracks.track[0]);
 
 const profileData = {
@@ -14,15 +14,16 @@ const profileData = {
   details: [
     { icon: "location_on", text: "united states" },
     { icon: "schedule", text: "eastern standard time" },
-    { icon: "person", text: "she/her"}
-
   ],
   socials: [
-    { icon: "/assets/svg/github.svg", media: "Github", link: "https://github.com/softmodded" },
+    { icon: "/assets/svg/github.svg", media: "Github", link: "https://softmodded.com/l/github" },
     { icon: "/assets/svg/email.png", media: "Email", link: "mailto://vee@softmodded.com" },
-    { icon: "/assets/svg/discord.svg", media: "Discord", link: "https://discord.com/users/332897183458131969" },
+    { icon: "/assets/svg/discord.svg", media: "Discord", link: "https://softmodded.com/l/discord" },
   ],
 };
+
+const names = ["evelyn", "vee", "softmodded", "evie"]
+const randomName = names[Math.floor(Math.random() * names.length)]
 ---
 
 <Layout>
@@ -30,7 +31,7 @@ const profileData = {
   <div>
     <div style="display: flex;justify-content: space-between;">
       <div>
-        <p class="name">{profileData.name}</p>
+        <p class="name">{randomName}</p>
         <p class="username">{profileData.username}</p>
       </div>  
       <div>
@@ -56,6 +57,18 @@ const profileData = {
           </div>
         ))
       }
+
+      <a href="/l/pronouns" style="display: flex; text-decoration: none; margin-top:10px; cursor:pointer;">
+        <span style="font-size: 20px;" class="material-symbols-outlined">
+          person
+        </span>
+        <span style="margin-left: 5px; margin-top:-2px;">
+          she/her
+        </span>
+        <span style="font-size: 15px; margin-left: 5px; margin-top:0.00000000001px;" class="material-symbols-outlined">
+          open_in_new
+        </span>
+      </a>
 
     {lastFMData['@attr']?.nowplaying ? 
       <div style="display: flex; margin-top:10px;">
@@ -94,38 +107,32 @@ const profileData = {
       }
     </div>
 
-    <h2 style="margin-bottom: 10px;">About</h2>
+    <h2 style="margin-bottom: 10px;">about me</h2>
     <div style="margin-top: 10px;line-height: 1.6;">
-      <p>Hi! I'm a US-based software engineer specializing in game and web development.</p>
+      <p>hi!!!! i'm a us-based software engineer specializing in game and web development!!</p>
     </div>
     
     <Skills/>
 
     <div style="margin-top: 10px;line-height: 1.6;">
       <p>
-        <strong>Who am I?:</strong>
-        My name is Evelyn (or Vee). I'm a self-taught software developer in high school who specializes in game development and web development. I love <bold>all</bold> web frameworks <italics>(even though Vue is the clear winner)</italics> and consider myself proficient in most of them. 
+        <strong>who r u?:</strong>
+        my name is evelyn. i'm a self-taught software developer in high school who specializes in game development and web development. i love <bold>all</bold> web frameworks <italics>(even though vue is the clear winner)</italics> 
         <br/><br/>
-        I currently daily drive Arch Linux. Some tools/packages I use in my setup are: <strong>eww, bspwm, sxhkd, kitty, nvim.</strong>
+        i currently daily drive arch. some tools/packages i use in my setup are: <strong>eww, bspwm, sxhkd, kitty, nvim.</strong>
       </p>
     </div>
 
-    <h2 style="margin-bottom: 10px;">Hobbies</h2>
+    <h2 style="margin-bottom: 10px;">hobbies!!!</h2>
     <div style="margin-top: 10px;line-height: 1.6;">
       <p>
-        <strong>I listen to a <bold><italic>ton</italic></bold> of music: </strong>
-        Music is one of the most important things in my life. Both the creation and the consumption. I bounce around genres all the time. Some of my favorites are: <bold>Grunge, Indie Alternative, Hip-Hop, and Breakcore</bold>
-
-        <br/><br/>
-
-        <strong>I play a lot of video games: </strong>
-        Video games rock. This is a well-established fact. I play a lot of them. I tend to get bored easily with most video games, preferring to stick to the same handful, but hey. If it works, it works. Some of my favorites are: <bold>Stardew Valley, Celeste, Geometry Dash, Forza, and Deadlock</bold>
-
+        <strong>i listen to a <bold><italic>ton</italic></bold> of music!! </strong>
+        music is one of the most important things in my life. both the creation and the consumption interest me a ton! i bounce around genres all the time. Some of my favorites are: <bold>grunge, indie/alternative, hip-hop, and hyperpop</bold>
         
       <br/><br/>
 
-      <strong>I program:</strong>
-      Obviously I program. I've said so like 10 times lol. I enjoy programming a ton, both professionally and as a hobby. You can check out my projects on my <a class="underline" href="/projects">projects page.</a> Most of my projects are Roblox games or Roblox-related in some aspect. 
+      <strong>i code!</strong>
+      obviously i code!! i've said so like 10 times lol... i enjoy programming a ton, both professionally and as a hobby. you can check out my projects on my <a class="underline" href="/projects">projects page.</a>  
       </p>
 
     </div>
