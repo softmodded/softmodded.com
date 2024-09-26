@@ -3,7 +3,7 @@ import Layout from "../layouts/Default.astro";
 import "../styles/page.css";
 import Skills from "../components/Skills/Skills.astro";
 
-const lastFMUrl = import.meta.env.LASTFM;
+const lastFMUrl = "https://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&user=blahaij&limit=1&extended=0&api_key=19782c92bcfb94a712e1e4e9ae281075&format=json"
 let lastFMData = await fetch(lastFMUrl).then((res) => res.json()).then((data) => data.recenttracks.track[0]);
 
 const profileData = {
