@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-  --site-background-color: #201927;
+  --site-background-color: #233439;
 
-  --site-card-background-color: #201927;
-  --site-card-border-color: #2e293b;
+  --site-card-background-color: #0d181b;
+  --site-card-border-color: #35535c;
   
   --site-general-text-color: #e1dede;
   --site-secondary-text-color: #adadad;
 
-  --site-pill-color: #2e2736;
-  --site-pill-hover-color: #483e56;
+  --site-pill-color: #233439;
+  --site-pill-hover-color: #456c77;
 
-  --site-links-color: #d4cdff;
-  --site-links-color-hover: #cba8f9;
+  --site-links-color: #3e6e7c;
+  --site-links-color-hover: #568e9f;
 }
 
 body, html {
